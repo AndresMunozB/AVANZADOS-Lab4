@@ -89,20 +89,21 @@ int calculate(int numberCoins[],int deliveredCoins[],int valueCoins[],int totalT
 	int changeAux = change;
 	//Aqui se agrega el efectivo a la caja (el que paga el cliente)
 	greedyDeposit(numberCoins,valueCoins,customerPayment);
-	// Aqui se obitiene lo que se debe entregar al cliente
-	// PROGRAMACION DINAMICA
 	
 
+	// Aqui se obitiene lo que se debe entregar al cliente
+	// PROGRAMACION DINAMICA
 	if (loadChange(deliveredCoins,change))
 	{
-		//no realiza nada por que si encuentra el vueto en el archivo lo carga inmediatamente
-		printf("Se encontro el valor en el archivo\n");
+		//no realiza nada por que si encuentra el vuelto 
+		//en el archivo, los valores se cargan inmediatamente
+		//printf("Se encontro el valor en el archivo\n");
 	}
 	else
 	{
 		greedyChange(deliveredCoins,valueCoins,change);
 		saveChange(deliveredCoins,change);
-		printf("No se encontro el valor en el archivo\n");
+		//printf("No se encontro el valor en el archivo\n");
 	}
 
 	
@@ -157,7 +158,7 @@ void greedyChange(int deliveredCoins[],int valueCoins[],int change)
         while (change>=valueCoins[i]){
             deliveredCoins[i]+=1;
 			change -= valueCoins[i];
-			printf("%d\n",change );
+			//printf("%d\n",change );
         }
         i++;
     }
@@ -211,7 +212,7 @@ int loadChange(int deliveredCoins[],int change)
 void saveChange(int deliveredCoins[],int change)
 {
 	//initDeliveredCoins(deliveredCoins);//comentar esto al final
-	showArray(deliveredCoins);
+	//showArray(deliveredCoins);
 	FILE* file = fopen("file.txt","a");
 	Change sChange;
 	sChange.f1 = '/';
